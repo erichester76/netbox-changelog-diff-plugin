@@ -4,9 +4,7 @@ __author__ = """Jamie Murphy"""
 __email__ = "git@jam.ie"
 __version__ = "0.2.1"
 
-
 from netbox.plugins import PluginConfig
-
 
 class ChangeLogDiffConfig(PluginConfig):
     name = "netbox_changelog_diff_plugin"
@@ -19,5 +17,9 @@ class ChangeLogDiffConfig(PluginConfig):
         "hide_native_diff": False,
     }
 
-
+    def ready(self):
+        super().ready()
+        from netbox_changelog_diff_plugin.tables import register_changelog
+        register_changelog()
+        
 config = ChangeLogDiffConfig
