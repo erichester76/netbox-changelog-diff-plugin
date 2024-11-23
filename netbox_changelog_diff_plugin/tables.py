@@ -42,7 +42,8 @@ class CustomAccessor(django_tables2.A):
 
 #dummy model and function to use to resolve summary
 class ChangeLogSummary(models.Model):
-
+    human_summary = models.CharField()
+    
     def get_human_summary():
         return None
     
